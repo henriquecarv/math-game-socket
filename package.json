@@ -1,17 +1,19 @@
 {
-	"name": "math-game-socket",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
+  "name": "math-game-socket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
     "start": "node .",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"dependencies": {
-		"express": "^4.16.3",
-		"socket.io": "^2.1.1"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC"
+    "publish":
+      "eb-deploy --application-name tutorials --environment-name math-game-socket --region us-east-2 --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
