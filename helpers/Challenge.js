@@ -12,6 +12,16 @@ const operators = {
 };
 
 class Challenge {
+  getFirstChallenge() {
+    this.newChallenge();
+    return {
+      firstOperand: firstOperand,
+      operator: operator,
+      secondOperand: secondOperand,
+      result: result
+    };
+  }
+
   getRandomNumber(max) {
     const min = 1;
     return Math.floor(Math.random() * (max - min + 1)) + min;

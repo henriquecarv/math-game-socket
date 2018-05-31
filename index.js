@@ -14,7 +14,7 @@ let connected = 0;
 io.on("connection", socket => {
   io.emit("connected", io.clients().server.engine.clientsCount);
 
-  io.emit("challenge", helper.newChallenge());
+  io.emit("challenge", helper.getFirstChallenge());
 
   socket.on("answer", data => {
     io.emit("answered", data);
