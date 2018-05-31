@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "publish":
-      "eb-deploy --application-name tutorials --environment-name math-game-socket --region us-east-2 --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY",
+    "publish": "./node_modules/@maxdome/eb-deploy/bin/eb-deploy --application-name tutorials --environment-name math-game-socket --region us-east-2 --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -14,6 +13,9 @@
     "socket.io": "^2.1.1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Henrique Carvalho da Cruz",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@maxdome/eb-deploy": "^2.1.2"
+  }
 }
