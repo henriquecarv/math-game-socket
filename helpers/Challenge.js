@@ -13,7 +13,6 @@ const operators = {
 
 class Challenge {
   getFirstChallenge() {
-    this.newChallenge();
     return {
       firstOperand: firstOperand,
       operator: operator,

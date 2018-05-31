@@ -10,7 +10,7 @@ const helper = require("./helpers/Challenge");
 const port = process.env.PORT || 3000;
 
 let connected = 0;
-
+helper.newChallenge();
 io.on("connection", socket => {
   io.emit("connected", io.clients().server.engine.clientsCount);
 
@@ -25,6 +25,7 @@ io.on("connection", socket => {
   });
 
   socket.on("new-challenge", data => {
+    console.log(data);
     io.emit("challenge", helper.newChallenge());
   });
 });
