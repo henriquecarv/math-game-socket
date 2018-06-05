@@ -4,29 +4,26 @@ const http = require("http");
 const server = http.Server(app);
 const socketIO = require("socket.io");
 const io = socketIO(server);
-
-const helper = require("./helpers/Challenge");
+const SocketIOEmit = require("./helpers/SocketIOEmit");
+const challengeHelper = require("./helpers/Challenge");
 
 const port = process.env.PORT || 3000;
 
-let connected = 0;
-helper.newChallenge();
-io.on("connection", socket => {
-  io.emit("connected", io.clients().server.engine.clientsCount);
+challengeHelper.newChallenge();
 
-  io.emit("challenge", helper.getFirstChallenge());
+io.on("connection", socket => {
+  const socketIOEmitHelper = new SocketIOEmit(io);
 
   socket.on("answer", data => {
-    io.emit("answered", data);
+    socketIOEmitHelper.sendAnswered(data);
   });
 
   socket.on("disconnect", () => {
-    io.emit("connected", io.clients().server.engine.clientsCount);
+    socketIOEmitHelper.sendConnectedPlayers();
   });
 
   socket.on("new-challenge", data => {
-    console.log(data);
-    io.emit("challenge", helper.newChallenge());
+    socketIOEmitHelper.sendNewChallenge();
   });
 });
 
