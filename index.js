@@ -11,8 +11,17 @@ const port = process.env.PORT || 3000;
 
 challengeHelper.newChallenge();
 
+let totalAnswers = 0;
+
 io.on("connection", socket => {
   const socketIOEmitHelper = new SocketIOEmit(io);
+
+  socket.on("new-answer", data => {
+    totalAnswers++;
+    if (totalAnswers === io.clients().server.engine.clientsCount) {
+      socketIOEmitHelper.sendAnswered(data);
+    }
+  });
 
   socket.on("answer", data => {
     socketIOEmitHelper.sendAnswered(data);
@@ -24,6 +33,7 @@ io.on("connection", socket => {
 
   socket.on("new-challenge", data => {
     socketIOEmitHelper.sendNewChallenge();
+    totalAnswers = 0;
   });
 });
 

@@ -8,7 +8,8 @@
     "prelint": "npm run check-modules",
     "lint": "./node_modules/.bin/eslint .",
     "prestart": "npm run check-modules",
-    "start": "./node_modules/.bin/nodemon --exec node .",
+    "local": "./node_modules/.bin/nodemon --exec node .",
+    "start": "node .",
     "publish": "./node_modules/@maxdome/eb-deploy/bin/eb-deploy --application-name tutorials --environment-name math-game-socket --region us-east-2 --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
