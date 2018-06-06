@@ -8,12 +8,16 @@ class SocketIOEvents {
   }
 
   init() {
-    challengeHelper.getFirstChallenge();
+    this.firstChallenge = challengeHelper.getFirstChallenge();
     this.sendConnectedPlayers();
+    this.sendNewChallenge(this.firstChallenge);
   }
 
-  sendNewChallenge() {
-    this.io.emit("challenge", challengeHelper.newChallenge());
+  sendNewChallenge(challenge) {
+    this.io.emit(
+      "challenge",
+      challenge !== undefined ? challenge : challengeHelper.newChallenge()
+    );
   }
 
   sendAnswered(data) {
