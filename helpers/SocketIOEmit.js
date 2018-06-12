@@ -20,10 +20,6 @@ class SocketIOEvents {
     );
   }
 
-  // sendEndOfRoundSignal() {
-  //   this.io.emit("endround", true);
-  // }
-
   sendAnswered(data) {
     this.io.emit("answered", data);
   }
